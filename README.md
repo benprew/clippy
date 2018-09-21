@@ -1,0 +1,2 @@
+# clippy
+Opensource commandline webclipper.
