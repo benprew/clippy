@@ -15,6 +15,6 @@ axios(url).then((resp) => {
   const html = resp.data;
   const dom = new JSDOM(html);
   var article = new Readability(dom.window.document).parse();
-  console.log(`---\ntitle: ${article.title}\n---\n`);
+  console.log(`---\ntitle: ${article.title}\nurl: ${url}\n---\n`);
   console.log(turndownService.turndown(article.content));
 });
