@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "jsdom": "^15.1.1",
-    "readability": "github:mozilla/readability",
+    "readability": "github:benprew/readability",
     "turndown": "^5.0.3"
   }
 }
