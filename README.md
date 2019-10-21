@@ -5,5 +5,5 @@ Clip articles from the web and save as markdown.  Uses [Mozilla's Readability li
 ## Usage
 ```
 npm install
-./clip.js https://www.allrecipes.com/recipe/20593/broccoli-beef-i/ > ~/Downloads/brocs-beef.md
+./clip.js http://norvig.com/sudoku.html > norvig_sudoku.md
 ```
