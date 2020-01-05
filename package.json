@@ -1,7 +1,16 @@
 {
-  "dependencies": {
-    "jsdom": "^15.1.1",
-    "readability": "github:benprew/readability",
-    "turndown": "^5.0.3"
-  }
+    "name": "clippy",
+    "version": "1.0.0",
+    "description": "It looks like you're trying to clip a webpage, would you like help?",
+    "author": "Ben Prew <ben@throwingbones.com>",
+    "main": "clip.js",
+    "bin": {
+        "clippy": "./clip.js"
+    },
+    "dependencies": {
+        "jsdom": "^15.2.1",
+        "package.json": "^2.0.1",
+        "readability": "github:benprew/readability",
+        "turndown": "^5.0.3"
+    }
 }

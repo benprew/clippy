@@ -2,7 +2,7 @@
 
 'use strict';
 
-const Readability = require("Readability");
+const Readability = require("readability");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const TurndownService = require('turndown');
