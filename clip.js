@@ -18,7 +18,7 @@ const page = process.argv[2];
 // TODO: understand why the tables in http://www.lebaneserecipes.com/Tabouleh.htm don't parse correctly in turndown
 
 // custom PRE tag parser, since turndown only parses <pre><code> blocks
-// turndownService.addRule(
+turndownService.addRule(
   'indented-pre-block',
   {
     filter: function (node, options) {
@@ -72,9 +72,7 @@ async function main(page) {
   } else {
     let article = new Readability(dom.window.document).parse();
     console.log(`---\ntitle: ${article.title}\nurl: ${page}\n\n---\n`);
-    //    console.log(turndownService.turndown(article.content));
-    let html = `<table><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td rowspan="3"><div><p>Serves 4</p></div><ul><li>3 cups of finely chopped flat leaf parsley</li><li>1/2 cup of finely chopped mint</li><li>4 or 5 finely chopped spring onions ( with the green parts )</li><li>4 tomatoes medium size chopped into small cubes</li><li>100g of fine burghul</li><li>1/2 cup lemon juice</li><li>4 tbs olive oil</li><li>Salt and Pepper</li></ul></td><td colspan="4"><img src="http://www.lebaneserecipes.com/Assets/tabouleh.jpg" width="312" height="185"></td></tr><tr><td></td><td colspan="3"><div><p><i>** <b>Important</b> **</i></p><p><i>When using fresh vegetables and herbs, make sure they are washed thoroughly and drained.</i></p></div></td></tr><tr><td></td><td></td><td colspan="2"><a href="http://www.lebaneserecipes.com/Lebanese-Recipes.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','Assets/b_back_o.gif',1)"><img src="http://www.lebaneserecipes.com/Assets/b_back.gif" width="75" height="43" name="Image11"></a></td></tr><tr><td colspan="4"><p>Soak the burghul in cold water for 1/2 an hour then drain. Mix all the ingredients together, taste and adjust seasoning if needed. Serve with lettuce leaves .</p></td><td></td></tr><tr><td><img width="400" height="1" src="http://www.lebaneserecipes.com/transparent.gif"></td><td><img width="4" height="1" src="http://www.lebaneserecipes.com/transparent.gif"></td><td><img width="233" height="1" src="http://www.lebaneserecipes.com/transparent.gif"></td><td><img width="65" height="1" src="http://www.lebaneserecipes.com/transparent.gif"></td><td><img width="13" height="1" src="http://www.lebaneserecipes.com/transparent.gif"></td></tr></tbody></table>`;
-    console.log(turndownService.turndown(html));
+    console.log(turndownService.turndown(article.content));
   }
 }
 
