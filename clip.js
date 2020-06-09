@@ -42,7 +42,10 @@ async function main(page) {
   const dom = await JSDOM.fromURL(page);
   let imgs = dom.window.document.querySelectorAll("img");
   for (let i=0; i < imgs.length; i++) {
-    imgs[i].setAttribute("src", url.resolve(page, imgs[i].getAttribute("src")));
+    let imgSrc = imgs[i].getAttribute("src");
+    if (imgSrc) {
+      imgs[i].setAttribute("src", url.resolve(page, imgs[i].getAttribute("src")));
+    }
   }
 
   if (process.argv[3] == "--html"){
