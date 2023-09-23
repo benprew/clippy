@@ -1,10 +1,13 @@
 {
     "name": "@benprew/clippy",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "It looks like you're trying to clip a webpage, would you like help?",
     "author": "Ben Prew <ben@throwingbones.com>",
     "main": "clip.js",
     "bin": {
+        "clippy": "./clip.js"
+    },
+    "scripts": {
         "clippy": "./clip.js"
     },
     "dependencies": {

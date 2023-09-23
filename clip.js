@@ -13,7 +13,37 @@ const turndownService = new TurndownService();
 
 turndownService.use(gfm);
 
-const page = process.argv[2];
+let args = {};
+
+process.argv.forEach((arg, index) => {
+    switch (arg) {
+    case "-h":
+        help();
+        break;
+    case "--help":
+        help();
+        break;
+    case "--html":
+        args.format = "html";
+        break;
+    default:
+        args.page = arg;
+    }
+
+});
+
+function help() {
+    console.error(`clippy <URL> [--html]
+
+Usage:
+
+URL    - the url to be clipped
+--html - format output as html (default is markdown)
+--help - this help
+`)
+    process.exit();
+}
+
 
 // TODO: understand why the tables in http://www.lebaneserecipes.com/Tabouleh.htm don't parse correctly in turndown
 
@@ -38,22 +68,22 @@ turndownService.addRule(
   }
 );
 
-async function main(page) {
-  const dom = await JSDOM.fromURL(page);
+async function main(args) {
+  const dom = await JSDOM.fromURL(args.page);
   let imgs = dom.window.document.querySelectorAll("img");
   for (let i=0; i < imgs.length; i++) {
     let imgSrc = imgs[i].getAttribute("src");
     if (imgSrc) {
-      imgs[i].setAttribute("src", url.resolve(page, imgs[i].getAttribute("src")));
+      imgs[i].setAttribute("src", url.resolve(args.page, imgs[i].getAttribute("src")));
     }
   }
 
-  if (process.argv[3] == "--html"){
+  if (args.format == "html"){
     for (let i=0; i < imgs.length; i++) {
       // replace img src with base64 encoded data block
       let dom_node = imgs[i];
       const imgSrc = dom_node.getAttribute("src");
-      dom_node.setAttribute("src", await inlineBase64Img(url.resolve(page, imgSrc)));
+      dom_node.setAttribute("src", await inlineBase64Img(url.resolve(args.page, imgSrc)));
     }
 
     // If you're going to use Readability with untrusted input (whether in HTML or DOM
@@ -74,7 +104,7 @@ async function main(page) {
     console.log('</body>');
   } else {
     let article = new Readability(dom.window.document).parse();
-    console.log(`---\ntitle: ${article.title}\nurl: ${page}\n\n---\n`);
+    console.log(`---\ntitle: ${article.title}\nurl: ${args.page}\n\n---\n`);
     console.log(turndownService.turndown(article.content));
   }
 }
@@ -116,4 +146,4 @@ function inlineBase64Img(page)
   });
 }
 
-main(page);
+main(args);

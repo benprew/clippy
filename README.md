@@ -12,5 +12,16 @@ npm install @benprew/clippy
 ```
 ## Usage
 ```
+clippy <URL> [--html]
+
+Usage:
+
+URL    - the url to be clipped
+--html - format output as html (default is markdown)
+--help - this help
+```
+
+## Examples
+```
 node_modules/.bin/clippy http://norvig.com/sudoku.html > norvig_sudoku.md
 ```
