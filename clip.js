@@ -2,7 +2,7 @@
 
 'use strict';
 
-const Readability = require("readability");
+const { Readability } = require('@mozilla/readability');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const TurndownService = require('turndown');
@@ -95,8 +95,8 @@ function inlineBase64Img(page)
     // const req = http.request(new URL(page), , (res) => {
     const req = http.get(new URL(page), (res) => {
       res.setEncoding('binary');
-      // console.log(`STATUS: ${res.statusCode}`);
-      // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+      // console.error(`STATUS: ${res.statusCode}`);
+      // console.error(`HEADERS: ${JSON.stringify(res.headers)}`);
       res.on('data', (chunk) => {
         body.push(chunk);
       });

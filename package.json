@@ -8,10 +8,9 @@
         "clippy": "./clip.js"
     },
     "dependencies": {
-        "jsdom": "^16.2.2",
-        "package.json": "^2.0.1",
-        "readability": "github:benprew/readability",
-        "turndown": "^6.0.0",
+        "@mozilla/readability": "^0.4.2",
+        "jsdom": "^18",
+        "turndown": "^7",
         "turndown-plugin-gfm": "^1.0.2"
     }
 }
