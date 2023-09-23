@@ -1,6 +1,6 @@
 {
     "name": "@benprew/clippy",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "It looks like you're trying to clip a webpage, would you like help?",
     "author": "Ben Prew <ben@throwingbones.com>",
     "main": "clip.js",
